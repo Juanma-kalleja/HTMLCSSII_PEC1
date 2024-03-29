@@ -1,0 +1,16 @@
+.footer {
+    @include box(flex, row, wrap, left, left);
+    padding: $l-spacing;
+    color: $color-background;
+    background-color: $color-primary;
+
+    &__list {
+        margin-right: $xxl-spacing;
+        font-size: 0.8rem;
+    }
+
+    &__link {
+        color: $color-secondary;
+        text-decoration: underline;
+    }
+}

@@ -1,0 +1,57 @@
+// RESET
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+}
+li{
+  margin: 0 0.5rem;
+  list-style-type: none;
+}
+
+//BASE
+
+html {
+  scroll-behavior: smooth;
+  font-size: $base-font-size;
+}
+
+body{
+  overflow-x: hidden;
+  font-family: $base-font-family;
+  color: $color-text;
+  text-align: left;
+  background: $color-background;
+}
+
+h1{
+  font-size: 2rem;
+}
+
+h2{
+  padding-top: $xl-spacing;
+  margin: 0 $m-spacing $m-spacing $m-spacing;
+  font-size: 1.7rem;
+  color: $color-secondary;
+  text-decoration: underline;
+}
+
+h3{
+  font-size: 1.3rem;
+}
+
+h4{
+  font-size: 1.1rem;
+}
+
+p{
+  padding: $m-spacing;
+  margin-bottom:$s-spacing;
+  font-size: 1rem;
+  line-height: 1.7rem;
+}
+
+b {
+  color: $color-primary;
+}

@@ -1,0 +1,43 @@
+.cards-container {
+    @include grid( 4, 2, $s-spacing);
+    padding: 0 $m-spacing;
+}
+
+.card {
+    border: $border-style;
+    @include responsive($breakpoint-s) {
+        margin-bottom: $m-spacing;
+    }
+    &:hover {
+      cursor: pointer;
+      background-color: light-comp($color-primary);
+    }
+
+    &__figure {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    &__image {
+      display: block;
+      width: 100%;
+    }
+
+    &__body {
+      padding: $s-spacing;    
+    }
+
+    &__title {
+      margin-bottom: $xs-spacing;
+      color: $color-primary;
+    }
+
+    &__paragraph {
+      padding: 0;
+      margin: 0;
+      @include text-ellipsis(10);
+      @include responsive($breakpoint-s) {
+        @include text-ellipsis(5);
+      }
+    }
+  }

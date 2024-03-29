@@ -1,0 +1,38 @@
+.section {
+    @include grid( 2, 1, 0);
+    &--reverse {
+        @include grid( 2, 1, 0);
+        direction: rtl;
+        @include responsive($breakpoint-m){
+            direction: ltr;
+            }
+    }
+
+    &__figure {
+        margin: 0;
+        overflow: hidden;
+    }
+
+    &__image {
+        width: 100%;
+      }
+
+    &__body {
+        margin: $xl-spacing $m-spacing $m-spacing $m-spacing;
+        overflow: hidden;
+        @include responsive($breakpoint-s){
+            margin-top: $m-spacing;
+        }
+    }
+    &__title {
+        margin-bottom: $s-spacing;
+        color: $color-primary;
+    }
+    &__paragraph {
+        padding: 0;
+        @include text-ellipsis(10);
+        @include responsive($breakpoint-l){
+            @include text-ellipsis(6); 
+        }
+    }
+  }

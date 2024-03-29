@@ -1,0 +1,116 @@
+.carousel-container {
+    position: relative;
+  }
+
+.carousel {
+    grid: "all" 1fr/1fr;
+    width: 100%;
+    max-width: 100%;
+    @include box(grid);
+    overflow-x: hidden;
+
+    > * {
+        grid-area: all; 
+    }
+
+    &__paragraph {
+        @include capital-style;
+        margin: 0 $m-spacing;
+        @include responsive($breakpoint-m) {
+            margin: 0;
+        }
+    }
+
+    &__display {
+        position: absolute;
+        top: 3%;
+        left: 10%;
+        z-index: 3;
+        width: 80%;
+        height: auto;
+        //Using flexbox to center align vertically and horizontally
+        @include box(flex, column, nowrap, center, center);
+
+        &-title {  
+            font-size: 2rem;
+            font-weight: 800; 
+            color: light-comp($color-primary);   
+            text-align: center;
+            //CSS to simulate text stroke using text-shadow property
+            text-shadow:
+                -1px -1px 0 $color-secondary,
+                1px -1px 0 $color-secondary,
+                -1px  1px 0 $color-secondary,
+                1px  1px 0 $color-secondary;
+            opacity: 0.6;
+
+            
+            //Tablets grid: Styles to be applied between s and m screens
+            @include responsive($breakpoint-m, $breakpoint-s) {
+                font-size: 3.5rem;
+            }
+          
+            //Desktop grid: Styles to be applied between m and l screens
+            @include responsive($breakpoint-l, $breakpoint-m) {
+                font-size: 5rem;
+            }
+          
+            //Large desktop grid: Styles to be applied for xl screens
+            @include responsive(null, $breakpoint-l) {
+                font-size: 8rem;
+            }
+        }
+    }
+
+
+    &__button {
+        z-index: 5;
+        border-radius: $xl-spacing;
+        @include button-styles;
+
+        &--previous {
+        justify-self: start;
+        margin-left: $s-spacing;
+        }
+
+        &--next {
+        justify-self: end;
+        margin-right: $s-spacing;
+        }
+    }
+    &__icon {
+        @include box(flex, column, nowrap, center, center);
+        width: $l-spacing;
+        height: $l-spacing;
+        color: $color-primary;
+        @include responsive($breakpoint-s) {
+            width: $m-spacing;
+            height: $m-spacing;  
+        }
+    }
+    &__image {
+        width: 100%;
+
+        &--hidden {
+        visibility: hidden;
+        }
+    }
+}
+
+//Movimiento de las imagenes en el carousel
+@keyframes animateFromLeft{
+    from {transform: translateX(-100%);}
+    to {transform: translateX(0);}
+}
+@keyframes animateFromRight{
+    from {transform: translateX(100%);}
+    to {transform: translateX(0);}
+}
+@keyframes animateToLeft{
+    from {transform: translateX(0);}
+    to {transform: translateX(-100%);}
+}
+@keyframes animateToRight{
+    from {transform: translateX(0);}
+    to {transform: translateX(100%);}
+}

@@ -1,0 +1,36 @@
+@use "sass:color";
+
+// colors
+$color-primary: #2011a2;
+$color-secondary: 	#ee138c;
+$color-background: light-comp($color-secondary);
+$color-text: black;
+$color-neutral: #ccc;
+
+$base-font-family: 'Poppins', sans-serif;
+
+
+//Base font size
+$base-font-size: 16px;
+
+//Screen sizes
+$container-l-width: 1080px;
+$container-m-width: 750px;
+$container-s-width: 100%;
+
+//Screen size breakpoints
+$breakpoint-l: $container-l-width - 1;
+$breakpoint-m: $container-m-width - 1;
+$breakpoint-s: 479px;
+
+//spacing values
+$xxs-spacing: 0.2rem;
+$xs-spacing: 0.5rem;
+$s-spacing: 1rem;
+$m-spacing: 1.5rem;
+$l-spacing: 2rem;
+$xl-spacing: 3rem;
+$xxl-spacing: 4rem;
+
+//border style
+$border-style: 4px solid $color-primary;

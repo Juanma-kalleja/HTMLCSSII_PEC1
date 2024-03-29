@@ -1,0 +1,87 @@
+.header {
+    width: 100%;
+    padding: $s-spacing;
+    background-color: light-comp($color-secondary);
+    border: $border-style;
+    @include box(flex, row, wrap, space-between, center);
+    
+    &__title {
+      font-size: 2rem;
+      color: $color-secondary;
+    }
+
+    &__main-icon {
+      margin-right: $s-spacing;
+      color: $color-primary;
+    }
+
+    &__link {
+      font-weight: bold;
+      color: $color-primary;
+      &:hover{
+        color: $color-secondary;
+        background-color:$color-primary;
+      }
+    }
+  
+    &__button {
+      @include button-styles;
+      display: block;
+  
+      @include responsive(null, $breakpoint-m){
+        display: none;
+      }
+    }
+
+    &__menu-icon {
+        @include box(flex, column, nowrap, center, center);
+        width: $xl-spacing;
+        height: $xl-spacing;
+        color: $color-primary;
+    }
+  
+    &__nav {
+      @include responsive($breakpoint-m){
+        width: 100%;
+        @include box(flex, column, nowrap, center, center);
+        height: 0vh;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.5s ease;
+  
+        &--active {
+          height: 25vh;
+          opacity: 1;
+        }
+      }
+    }
+    
+    &__list {
+      @include box(flex, column, nowrap, flex-end, center);
+      @include responsive(null, $breakpoint-m){
+        flex-direction: row;
+      }
+    }
+
+    &__list-item {
+      margin: $s-spacing 0;
+      @include responsive(null, $breakpoint-m){
+        margin: $xs-spacing;
+      }
+    }
+  }
+
+.rotate {
+    animation: rotateAnimation 1s linear 0.5;
+}
+
+@keyframes rotateAnimation {
+  0% {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(180deg);
+  }
+}

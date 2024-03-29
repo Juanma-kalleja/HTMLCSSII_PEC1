@@ -1,0 +1,61 @@
+.rows-container {
+    margin: $l-spacing $xl-spacing;
+    @include responsive($breakpoint-m) {
+        margin: $s-spacing $l-spacing;
+    }
+    @include box(flex, column, wrap, left, left);
+  }
+  
+.row {
+    width: 100%;
+    @include box(flex, column, wrap, left, left);
+
+    &:hover {
+        cursor: pointer;
+        background-color: light-comp($color-primary);
+    }
+
+    &__button {
+        padding: $s-spacing $m-spacing;
+        @include box(flex, row, nowrap, space-between, left);
+
+        > * {
+            pointer-events: none;
+          }
+        
+        &--expanded {
+            color: $color-background;
+            background-color: $color-secondary;
+        }
+    }
+
+    &__body {
+        display: none;
+        padding: $xs-spacing $m-spacing;
+    }
+
+    &__list {
+        padding: $m-spacing $s-spacing;
+    }
+
+    &__list-item {
+        padding-bottom: $m-spacing;
+        list-style-type: circle;
+
+        &::marker {
+            color: $color-secondary;
+        }
+    }
+
+    &__name {
+        color: $color-primary;
+    }
+
+    &__icon {
+        color: $color-primary;
+    }
+}
+
+.row:not(:first-child) {
+    border-top: $border-style;
+}

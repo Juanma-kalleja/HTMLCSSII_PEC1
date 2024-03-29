@@ -1,0 +1,97 @@
+// $max-breakpoint is used to define the maximum width breakpoint.
+// $min-breakpoint is an optional parameter used to define the minimum width breakpoint. If not provided, it remains null.
+// The @if directive checks if $min-breakpoint is provided. If so, it generates a media query with min-width. 
+// If not, it checks if $max-breakpoint is provided and generates a media query with max-width.
+// Inside the media query block, @content includes the styles passed to the mixin.
+@mixin responsive($max-breakpoint, $min-breakpoint: null) {
+  @if $min-breakpoint {
+    @media screen and (min-width: $min-breakpoint) {
+      @content;
+    }
+  } @else if $max-breakpoint {
+    @media screen and (max-width: $max-breakpoint) {
+      @content;
+    }
+  }
+}
+
+//Box model mixin
+@mixin box($dis, $dir: row, $wrap: nowrap, $just: center, $align: center){
+    //Box Model type (block, inline, inline-block, none, flex, grid,...)
+    display: $dis;
+    // When display is flex, flex-flow sets up the 
+    // flex container direction (row, row-reverse, column, coolumn-reverse) 
+    // and (wrap, nowrap, wrap-reverse) behaviour.
+    flex-flow: $dir $wrap;
+    //align-items is used to align items in the flex container cross axis.
+    align-items: $align;
+    //justify-content is used to align items in the flex container main axis.
+    justify-content: $just;
+}
+
+//Define grid layout
+@mixin grid ($columns-l, $columns-m, $space: 0rem){
+  //Mobile grid (first): Styles to be applied on mobile screens
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  //Tablets grid: Styles to be applied between s and m screens
+  @include responsive($breakpoint-m, $breakpoint-s) {
+      grid-template-columns: repeat($columns-m, 1fr);
+      gap: $space * 0.9;
+  }
+  //Desktop grid: Styles to be applied between m and l screens
+  @include responsive($breakpoint-l, $breakpoint-m) {
+    grid-template-columns: repeat($columns-l, 1fr);
+    gap: $space;
+  }
+  //Large desktop grid: Styles to be applied for xl screens
+  @include responsive(null, $breakpoint-l) {
+    grid-template-columns: repeat($columns-l, 1fr);
+    gap: ($space) * 1.1;
+    padding: 0 $m-spacing;
+  }
+}
+
+/// Crop text and display an ellipsis with multiline.
+@mixin text-ellipsis ($lines: 1) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @if $lines == 1 {
+    white-space: nowrap;
+  } @else {
+    white-space: inherit;
+
+    @supports (-webkit-line-clamp: $lines) {
+      -webkit-box-orient: vertical;
+      display: -webkit-box;
+      -webkit-line-clamp: $lines;
+    }
+  }
+}
+
+
+// Mixin for button styling
+@mixin button-styles {
+  padding: $xxs-spacing;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: $color-primary;
+  cursor: pointer;
+  border: $border-style;
+
+  &:hover {
+    background-color: light-comp($color-primary);
+    transform: scale(1.1);
+  }
+}
+
+//Mixin for capitalize a paragraph
+@mixin capital-style {
+  &:first-letter {
+    font-size: 250%;
+    font-weight: bold;
+    color: $color-secondary;
+  }
+}
